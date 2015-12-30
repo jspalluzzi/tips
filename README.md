@@ -16,6 +16,9 @@ Completed:
 * [x] Optional: Using locale-specific currency and currency thousands separators.
 * [x] Optional: Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
+Should work on all iPhone resolutions. I allowed for a variable amount of persons to split the check with in the settings. Had a great time using Swift, I already feel like I'm learning :)
+
+Walk through the basics of the app plus change in currency:
 ![Video Walkthrough](gif/file.gif)
 
-Note: to embed the gif file, just check your gif file into your repo and update the name of the file above.
+GIF created with LiceCap.
