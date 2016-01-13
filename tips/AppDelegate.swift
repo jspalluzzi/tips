@@ -17,6 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        if self.window!.rootViewController as? UITabBarController != nil {
+            let tababarController = self.window!.rootViewController as! UITabBarController
+            tababarController.selectedIndex = 1
+        }
+        
         if((defaults.objectForKey("first_launch")) != nil){
             self.checkLastUsedTime()
         }
