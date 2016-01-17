@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate {
     
     let sectionTitles = ["Tip Percentages", "Split Bill", "Dark Theme"];
     let tipPercentagesSettings = ["tip_percent_default", "tip_percent_min", "tip_percent_max"];
@@ -22,6 +22,10 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     var percentMin: Int = Int()
     var percentMax: Int = Int()
     var revertValue: String = String()
+    
+    var defalutRed = 102.0/255.0
+    var defaultGreen = 255.0/255.0
+    var defaultBlue = 255.0/255.0
     
     @IBOutlet weak var settingsTableView: UITableView!
     
@@ -98,6 +102,17 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             return cell
         }
         
+    }
+    
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
+        
+        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        
+        if(!defaults.boolForKey("dark_theme")){
+            header.contentView.backgroundColor = UIColor.whiteColor()
+        }else{
+            header.contentView.backgroundColor = UIColor.darkGrayColor()
+        }
     }
     
     // MARK: - IBActions
@@ -191,18 +206,29 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         
     }
     
+    
     // Mark: - Theme Change
     
     func checkAndChangeColors(){
         
         if(defaults.boolForKey("dark_theme")){
             UIView.animateWithDuration(0.5, animations: {
-                self.view.backgroundColor = UIColor.darkGrayColor()
+                
+                let red = CGFloat(self.defalutRed * 0.25)
+                let green = CGFloat(self.defaultGreen * 0.25)
+                let blue = CGFloat(self.defaultBlue * 0.25)
+                
+                self.view.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 1)
             })
         }
         else{
             UIView.animateWithDuration(0.5, animations: {
-                self.view.backgroundColor = UIColor.groupTableViewBackgroundColor()
+                
+                let red = CGFloat(self.defalutRed)
+                let green = CGFloat(self.defaultGreen)
+                let blue = CGFloat(self.defaultBlue)
+                
+                self.view.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 1)
             })
         }
         
@@ -217,6 +243,13 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+    }
+    
+    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
+        //This method will be called when user changes tab.
+        
+        
+        
     }
     
 
