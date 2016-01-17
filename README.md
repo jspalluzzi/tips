@@ -18,7 +18,13 @@ Completed:
 
 Should work on all iPhone resolutions. I allowed for a variable amount of persons to split the check with in the settings. Had a great time using Swift, I already feel like I'm learning :)
 
+Thank you for letting me resubmit with updates
+Changed up the design
+Added a shake for random tip in your tip range
+split the views with a Tab Bar
+used a pan gesture to change tip percentage 
+
 Walk through the basics of the app plus change in currency:
-![Video Walkthrough](gif/file.gif)
+![Video Walkthrough](gif/record.gif)
 
 GIF created with LiceCap.
